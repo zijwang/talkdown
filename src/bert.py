@@ -82,8 +82,8 @@ def get_dataloader(args, processor, label_list, tokenizer, is_train=False):
         sampler = SequentialSampler(data)
 
     dataloader = DataLoader(data, sampler=sampler,
-                            batch_size=max(args.n_gpu, 1) * args.per_gpu_eval_batch_size if is_train
-                            else max(args.n_gpu, 1) * args.per_gpu_train_batch_size,
+                            batch_size=max(args.n_gpu, 1) * args.per_gpu_train_batch_size if is_train
+                            else max(args.n_gpu, 1) * args.per_gpu_eval_batch_size,
                             num_workers=args.n_gpu * 2, pin_memory=True, drop_last=True if is_train else False)
     return dataloader
 
